@@ -1,0 +1,18 @@
+{
+  "name": "xero-import",
+  "version": "1.0.0",
+  "description": "Xero Bank Statement File Import",
+  "main": "xero_file_converter.ts",
+  "scripts": {
+    "test": "test",
+    "start": "ts-node xero_file_converter.ts"
+  },
+  "author": "Nathan Floor",
+  "license": "ISC",
+  "dependencies": {
+    "@types/node": "^20.11.16",
+    "csv-writer": "^1.6.0",
+    "ts-node": "^10.9.2",
+    "xlsx": "^0.18.5"
+  }
+}
