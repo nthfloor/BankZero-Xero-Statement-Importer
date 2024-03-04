@@ -61,7 +61,7 @@ async function transformAndExportData(excelFilePath: string) {
         const workbook = XLSX.readFile(excelFilePath);
         const sheetNameList = workbook.SheetNames;
         const xlsData = XLSX.utils.sheet_to_json(workbook.Sheets[sheetNameList[1]]);
-        console.log('The Excel file has been read successfully.');
+        console.log('The Excel file has been read successfully: ', excelFilePath);
 
         // Transform the data to match the structure of the template CSV
         const transformedData = xlsData.map((row: any) => {
@@ -86,7 +86,7 @@ async function transformAndExportData(excelFilePath: string) {
 
         // Write the transformed data to a new CSV file
         await csvWriter.writeRecords(transformedData);
-        console.log('The CSV file was written successfully');
+        console.log('The CSV file was written successfully: ', outputCsvPath);
 
     } catch (err) {
         console.error("An error occurred:", err);
@@ -104,7 +104,7 @@ async function transformAllBankZeroStatementFiles() {
         const xlsFiles = files
             .filter(file => 
                 file.isFile() 
-                && (file.name.startsWith('Working capital')) 
+                && (file.name.startsWith('Working capital') || file.name.startsWith('Optimal ALS')) 
                 && path.extname(file.name).toLowerCase() === '.xls')
             .map(file => file.name);
             
