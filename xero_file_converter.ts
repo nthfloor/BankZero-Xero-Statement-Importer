@@ -104,7 +104,7 @@ async function transformAllBankZeroStatementFiles() {
         const xlsFiles = files
             .filter(file => 
                 file.isFile() 
-                && (file.name.startsWith('Working capital') || file.name.startsWith('Optimal ALS')) 
+                && (file.name.startsWith('Cash reserves') || file.name.startsWith('Optimal')) 
                 && path.extname(file.name).toLowerCase() === '.xls')
             .map(file => file.name);
             
